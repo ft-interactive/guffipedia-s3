@@ -1,0 +1,27 @@
+machine:
+  timezone: Europe/London
+  node:
+    version: 6.3.0
+
+dependencies:
+  cache_directories:
+    - bower_components
+    - node_modules
+  pre:
+    - npm install -g npm
+  override:
+    - npm install
+    - sudo pip install awscli
+
+deployment:
+  development:
+    branch: /^(?!(master)$)/
+    commands:
+      - npm run build
+      - /bin/bash task/deploy-development.sh
+
+  production:
+    branch: master
+    commands:
+      - npm run build
+      - /bin/bash task/deploy-production.sh
