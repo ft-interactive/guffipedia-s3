@@ -17,11 +17,13 @@ deployment:
   development:
     branch: /^(?!(master)$)/
     commands:
+      - touch .env
       - npm run build
       - /bin/bash task/deploy-development.sh
 
   production:
     branch: master
     commands:
+      - touch .env
       - npm run build
       - /bin/bash task/deploy-production.sh
