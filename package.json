@@ -48,7 +48,7 @@
     "watchify": "^3.6.1"
   },
   "engines": {
-    "node": ">=4 <5",
+    "node": ">=6 <7",
     "npm": ">=3 <4"
   },
   "private": true,
