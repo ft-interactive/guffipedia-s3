@@ -18,5 +18,4 @@ deployment:
   s3: # this is just a custom name, could be anything
     branch: /.*/
     commands:
-      - npm run build
       - npm run deploy:confirm
