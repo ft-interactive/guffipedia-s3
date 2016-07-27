@@ -138,7 +138,7 @@ import { cyan, green, red, yellow } from 'chalk';
       console.log(`${green(figures.tick)} Uploaded ${uploadCount} files.`);
 
       // NB. this is the only one of about 5 different S3 URL formats that supports automatic index.html resolution
-      console.log(cyan(`  http://${bucketName}.s3-website-eu-west-1.amazonaws.com/${remotePrefix}`));
+      console.log(cyan(`\n  http://${bucketName}.s3-website-eu-west-1.amazonaws.com/${remotePrefix}`));
     });
   }
 })();
