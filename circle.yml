@@ -15,14 +15,7 @@ dependencies:
     - sudo pip install awscli
 
 deployment:
-  development:
-    branch: /^(?!(master)$)/
+  s3: # this is just a custom name, could be anything
     commands:
       - npm run build
-      - /bin/bash task/deploy-development.sh
-
-  production:
-    branch: master
-    commands:
-      - npm run build
-      - /bin/bash task/deploy-production.sh
+      - npm run deploy:confirm

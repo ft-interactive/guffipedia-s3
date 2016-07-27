@@ -4,6 +4,7 @@ env:
   node: true
 ecmaFeatures:
   modules: true
+parser: babel-eslint
 rules:
   indent: [2, 2]
   curly: 0

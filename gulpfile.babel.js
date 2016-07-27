@@ -9,7 +9,6 @@ import fetch from 'node-fetch';
 import fs from 'fs';
 import gulp from 'gulp';
 import Handlebars from 'handlebars';
-import igdeploy from 'igdeploy';
 import jsonTransform from 'gulp-json-transform';
 import mkdirp from 'mkdirp';
 import mergeStream from 'merge-stream';
@@ -32,8 +31,6 @@ const AUTOPREFIXER_BROWSERS = [
   'ff >= 30',
   'chrome >= 34',
 ];
-
-const DEPLOY_TARGET = ''; // e.g. 'features/YOUR-PROJECT-NAME'
 
 const BROWSERIFY_ENTRIES = [
   'scripts/main.js',
@@ -246,23 +243,6 @@ gulp.task('build', done => {
     // create RSS feed in dist
     ['create-rss-feed'],
   done);
-});
-
-// task to deploy to the interactive server
-gulp.task('deploy', done => {
-  if (!DEPLOY_TARGET) {
-    console.error('Please specify a DEPLOY_TARGET in your gulpfile!');
-    process.exit(1);
-  }
-
-  igdeploy({
-    src: 'dist',
-    destPrefix: '/var/opt/customer/apps/interactive.ftdata.co.uk/var/www/html',
-    dest: DEPLOY_TARGET,
-  }, error => {
-    if (error) return done(error);
-    console.log(`Deployed to http://ig.ft.com/${DEPLOY_TARGET}/`);
-  });
 });
 
 // downloads the data from bertha to client/words.json
